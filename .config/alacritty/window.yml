@@ -1,4 +1,5 @@
 window:
+  option_as_alt: OnlyLeft
   # Window dimensions (changes require restart)
   #
   # Number of lines/columns (not pixels) in the terminal. Both lines and columns
