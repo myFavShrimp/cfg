@@ -1,0 +1,71 @@
+[[language]]
+name = "rust"
+language-server = { command = "rustup", args = ["run", "stable", "rust-analyzer"] }
+
+[[language]]
+name = "svelte"
+indent = { tab-width = 4, unit = "    " }
+
+[[language]]
+name = "javascript"
+indent = { tab-width = 4, unit = "    " }
+
+[[language]]
+name = "json"
+indent = { tab-width = 4, unit = "    " }
+
+[[language]]
+name = "jsx"
+indent = { tab-width = 4, unit = "    " }
+
+[[language]]
+name = "typescript"
+indent = { tab-width = 4, unit = "    " }
+
+[[language]]
+name = "tsx"
+indent = { tab-width = 4, unit = "    " }
+
+[[language]]
+name = "css"
+indent = { tab-width = 4, unit = "    " }
+
+[[language]]
+name = "scss"
+indent = { tab-width = 4, unit = "    " }
+
+[[language]]
+name = "html"
+indent = { tab-width = 4, unit = "    " }
+
+[[language]]
+name = "bash"
+indent = { tab-width = 4, unit = "    " }
+
+[[language]]
+name = "twig"
+indent = { tab-width = 4, unit = "    " }
+
+[[language]]
+name = "lua"
+indent = { tab-width = 4, unit = "    " }
+
+[[language]]
+name = "vue"
+indent = { tab-width = 4, unit = "    " }
+
+[[language]]
+name = "yaml"
+indent = { tab-width = 4, unit = "    " }
+
+[[language]]
+name = "graphql"
+indent = { tab-width = 4, unit = "    " }
+
+[[language]]
+name = "nu"
+indent = { tab-width = 4, unit = "    " }
+
+[[language]]
+name = "xml"
+indent = { tab-width = 4, unit = "    " }
