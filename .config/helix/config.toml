@@ -14,3 +14,11 @@ render = true
 # insert = "underline"
 # normal = "block"
 # select = "underline"
+
+
+# keybindings -------------------------------------------------------------------------------------
+[keys.normal]
+C-y = ":clipboard-yank"
+
+[keys.select]
+C-y = ":clipboard-yank"
