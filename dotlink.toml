@@ -8,7 +8,7 @@ to = "~/.config/.."
 
 [[linux]]
 names = [
-  "nushell",
+  ".config/nushell",
 ]
 # prevent dotlink from trying to link to ~/.config/.config/
 to = "~/.config/.."
