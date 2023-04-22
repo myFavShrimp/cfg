@@ -4,6 +4,7 @@ list: # "list targets"
 arch-base: # "setup arch linux base"
 	sudo pacman -S base-devel --noconfirm
 	sudo pacman -S openssh --noconfirm
+	sudo pacman -S git --noconfirm
 
 rust: # "install rust using rustup"
 	curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- --default-toolchain stable -y
