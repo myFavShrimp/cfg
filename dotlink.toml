@@ -1,0 +1,14 @@
+[[default]]
+names = [
+  ".config/helix",
+  ".config/alacritty",
+]
+# prevent dotlink from trying to link to ~/.config/.config/
+to = "~/.config/.."
+
+[[linux]]
+names = [
+  "nushell",
+]
+# prevent dotlink from trying to link to ~/.config/.config/
+to = "~/.config/.."
