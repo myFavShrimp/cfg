@@ -42,7 +42,7 @@ dump-all-dconf: # dump all dconf settings
 load-basic-gnome: # load basic gnome settings
 	dconf load / < basic-gnome.dconf
 
-web-tools: #setup tools needed or web dev
+web-tools: # setup tools needed for web dev
 	cargo install fnm
 	# echo 'eval "$(fnm env --use-on-cd)"' >> ~/.bashrc
 

@@ -662,3 +662,13 @@ let-env config = {
 }
 
 source ~/.cache/starship/init.nu
+
+if (which hx | is-empty) and (not (which helix | is-empty)) {
+  alias hx = helix
+  $nu.scope.aliases = [
+    {
+      name: hx
+      expansion: helix
+    }
+  ]
+}
