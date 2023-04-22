@@ -30,6 +30,12 @@ rust-tools: # "install oxidized tools using the rust toolchain / curl"
 	
 	curl -sS https://starship.rs/install.sh | sh -s -s -- -y
 
+dump-gnome-extensions:
+	dconf dump /org/gnome/shell/extensions/ > gnome-shell-extension-settings.dconf
+
+load-gnome-extensions:
+	dconf load /org/gnome/shell/extensions/ < extension-settings.dconf
+
 web-tools:
 	cargo install fnm
 	# echo 'eval "$(fnm env --use-on-cd)"' >> ~/.bashrc
