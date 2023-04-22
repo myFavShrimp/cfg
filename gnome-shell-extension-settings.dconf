@@ -1,3 +1,6 @@
+[alphabetical-app-grid]
+folder-order-position='start'
+
 [clipboard-indicator]
 disable-down-arrow=true
 history-size=200
