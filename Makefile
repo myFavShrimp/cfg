@@ -36,6 +36,12 @@ dump-gnome-extensions: # dump settings of gnome shell extensions
 load-gnome-extensions: # load gnome shell extension settings
 	dconf load /org/gnome/shell/extensions/ < extension-settings.dconf
 
+dump-all-dconf: # dump all dconf settings
+	dconf dump / > all-dconf.dconf
+
+load-basic-gnome: # load basic gnome settings
+	dconf load / < basic-gnome.dconf
+
 web-tools: #setup tools needed or web dev
 	cargo install fnm
 	# echo 'eval "$(fnm env --use-on-cd)"' >> ~/.bashrc
