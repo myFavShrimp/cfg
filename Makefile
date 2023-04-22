@@ -2,9 +2,7 @@ list: # list commands
 	@grep '^[^#[:space:]].*:' Makefile
 
 arch-base: # setup arch linux base
-	sudo pacman -S base-devel --noconfirm
-	sudo pacman -S openssh --noconfirm
-	sudo pacman -S git --noconfirm
+	sudo pacman -S base-devel openssh git podman podman-compose --noconfirm
 
 rust: # install rust using rustup
 	curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- --default-toolchain stable -y
@@ -26,6 +24,7 @@ rust-tools: # install oxidized tools using the rust toolchain / curl
 	cargo install --locked repgrep
 	cargo install --locked cargo-modules
 	cargo install --locked dotlink
+	cargo install --locked fd-find
 	rustup component add rust-analyzer
 	
 	curl -sS https://starship.rs/install.sh | sh -s -s -- -y
