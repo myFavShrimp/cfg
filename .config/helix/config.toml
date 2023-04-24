@@ -7,6 +7,9 @@ rulers = [
   100,
 ]
 
+[editor.file-picker]
+hidden = false
+
 [editor.indent-guides]
 render = true
 
