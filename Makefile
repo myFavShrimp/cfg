@@ -1,7 +1,7 @@
 list: # list commands
 	@grep '^[^#[:space:]].*:' Makefile
 
-arch-base: # setup arch linux base
+arch-box: # setup arch linux distrobox
 	sudo pacman -S base-devel openssh git podman podman-compose --noconfirm
 
 rust: # install rust using rustup
@@ -9,7 +9,6 @@ rust: # install rust using rustup
 
 rust-tools-arch: # install oxidized tools using pacman
 	sudo pacman -S helix --noconfirm
-	sudo pacman -S nushell --noconfirm
 
 rust-tools-fedora: # install oxidized tools using dnf
 	sudo dnf copr enable varlad/helix
@@ -25,6 +24,7 @@ rust-tools: # install oxidized tools using the rust toolchain / curl
 	cargo install --locked cargo-modules
 	cargo install --locked dotlink
 	cargo install --locked fd-find
+	cargo install --locked nu
 	rustup component add rust-analyzer
 	
 	curl -sS https://starship.rs/install.sh | sh -s -s -- -y

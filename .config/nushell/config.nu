@@ -311,7 +311,7 @@ let-env config = {
     clickable_links: true # enable or disable clickable links. Your terminal has to support links.
   }
   rm: {
-    always_trash: false # always act as if -t was given. Can be overridden with -p
+    always_trash: true # always act as if -t was given. Can be overridden with -p
   }
   cd: {
     abbreviations: false # allows `cd s/o/f` to expand to `cd some/other/folder`
@@ -664,9 +664,9 @@ let-env config = {
 source ~/.cache/starship/init.nu
 
 def hx [...args] {
-  if not ((which helix) | is-empty) {
+  if (which helix | get path | path exists).0 {
     helix $args
-  } else if not ((which hx) | is-empty) {
+  } else if (which hx | get path | path exists).0 {
     hx $args
   }
 }
