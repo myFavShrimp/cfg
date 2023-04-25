@@ -663,10 +663,4 @@ let-env config = {
 
 source ~/.cache/starship/init.nu
 
-def hx [...args] {
-  if not ((which helix) | is-empty) {
-    helix $args
-  } else if not ((which hx) | is-empty) {
-    hx $args
-  }
-}
+alias cd.. = cd ..
