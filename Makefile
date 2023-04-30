@@ -20,6 +20,12 @@ rust-tools: # install oxidized tools using the rust toolchain / curl
 	
 	curl -sS https://starship.rs/install.sh | sh -s -s -- -y
 
+flatpaks: # install flatpaks listed in resources/flatpaks
+	sh scripts/install_flatpaks.sh
+
+extensions: # install extensions listed in resources/extensions
+	sh scripts/install_extensions.sh
+
 # load-dconf: # load dconf settings
 # 	dconf load / < all-dconf.dconf
 
