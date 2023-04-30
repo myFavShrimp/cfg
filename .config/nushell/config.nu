@@ -663,12 +663,4 @@ let-env config = {
 
 source ~/.cache/starship/init.nu
 
-def hx [...args] {
-  if (which helix | get path | path exists).0 {
-    helix $args
-  } else if (which hx | get path | path exists).0 {
-    hx $args
-  }
-}
-
 alias cd.. = cd ..
