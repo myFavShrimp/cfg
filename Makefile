@@ -32,5 +32,8 @@ extensions: # install extensions listed in resources/extensions
 # dump-all-dconf: # dump all dconf settings
 # 	dconf dump / > all-dconf.dconf
 
-copy-fonts: # [nu] install fonts
-	nu scripts/install_fonts.nu
+copy-fonts: # install fonts
+	mkdir -p /usr/share/fonts/hack
+	cp -r fonts/Hack /usr/share/fonts/hack
+	rm -rf /usr/share/fonts/hack/Windows
+	# nu scripts/install_fonts.nu
