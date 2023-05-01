@@ -2,7 +2,6 @@
 
 FILENAME='resources/gnome-extensions'
 
-echo Start
 while read EXTENSION; do
     EXTENSION_ID=$(curl -s $EXTENSION | grep -oP 'data-uuid="\K[^"]+')
     echo "https://extensions.gnome.org/extension-query/?search=${EXTENSION_ID}"
