@@ -3,12 +3,10 @@ names = [
   ".config/helix",
   ".config/alacritty",
 ]
-# prevent dotlink from trying to link to ~/.config/.config/
-to = "~/.config/.."
+to = "~/"
 
 [[linux]]
 names = [
   ".config/nushell",
 ]
-# prevent dotlink from trying to link to ~/.config/.config/
-to = "~/.config/.."
+to = "~/"

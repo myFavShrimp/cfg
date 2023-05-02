@@ -1,3 +1,7 @@
+[org/gnome/shell]
+disabled-extensions=['background-logo@fedorahosted.org', 'dash-to-panel@jderose9.github.com', 'theme-switcher@fthx']
+enabled-extensions=['trayIconsReloaded@selfmade.pl', 'dash-to-dock@micxgx.gmail.com', 'clipboard-indicator@tudmotu.com', 'AlphabeticalAppGrid@stuarthayhurst']
+
 [alphabetical-app-grid]
 folder-order-position='start'
 
