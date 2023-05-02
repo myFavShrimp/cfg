@@ -10,3 +10,9 @@ names = [
   "nushell",
 ]
 to = "~/.config"
+
+[[macos]]
+names = [
+  "nushell",
+]
+to = "~/Library/Application Support/"
