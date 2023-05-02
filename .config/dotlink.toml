@@ -1,0 +1,12 @@
+[[default]]
+names = [
+  "helix",
+  "alacritty",
+]
+to = "~/.config"
+
+[[linux]]
+names = [
+  "nushell",
+]
+to = "~/.config"
