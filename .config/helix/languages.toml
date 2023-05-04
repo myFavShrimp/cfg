@@ -81,3 +81,7 @@ indent = { tab-width = 4, unit = "    " }
 name = "xml"
 indent = { tab-width = 4, unit = "    " }
 file-types = ["xml", "mobileconfig", "plist", "xib", "storyboard", "svg", "xsd", "storyboard"]
+
+[[language]]
+name = "toml"
+indent = { tab-width = 4, unit = "    " }
