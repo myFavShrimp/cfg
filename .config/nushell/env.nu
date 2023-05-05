@@ -80,3 +80,4 @@ mkdir ~/.cache/starship
 starship init nu | save -f ~/.cache/starship/init.nu
 
 let-env PATH = ($env.PATH | prepend '~/.cargo/bin')
+let-env EDITOR = "hx"
