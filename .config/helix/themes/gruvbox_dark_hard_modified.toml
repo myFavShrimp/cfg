@@ -1,0 +1,8 @@
+inherits = "gruvbox_dark_hard"
+
+"ui.cursor.primary" = { bg = "cursor_color", fg = "bg1" }
+"ui.cursor" = { bg = "secondary_cursor_color" }
+
+[palette]
+cursor_color="#FFFFFF"
+secondary_cursor_color="#a0a0a0"
