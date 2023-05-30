@@ -2,6 +2,7 @@
 names = [
   "helix",
   "alacritty",
+  "zellij",
 ]
 to = "~/.config"
 
