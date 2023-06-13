@@ -30,6 +30,8 @@ pageup = "no_op"
 pagedown = "no_op"
 home = "no_op"
 end = "no_op"
+"!" = ["insert_at_line_start", "normal_mode"]
+"@" = ["insert_at_line_end", "normal_mode"]
 
 [keys.insert]
 up = "no_op"

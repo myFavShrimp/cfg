@@ -5,7 +5,7 @@ language-server = { command = "rustup", args = ["run", "stable", "rust-analyzer"
 [[language]]
 name = "swift"
 # language-server = { command = "sourcekit-lsp", args = ["-Xswiftc", "-sdk", "-Xswiftc", "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator.sdk", "-Xswiftc", "-target", "-Xswiftc", "x86_64-apple-ios16.2-simulator"] } 
-language-server = { command = "sourcekit-lsp", timeout = 1500 }
+# language-server = { command = "sourcekit-lsp", timeout = 1500 }
 indent = { tab-width = 4, unit = "    " }
 
 [[language]]
