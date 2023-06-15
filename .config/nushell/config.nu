@@ -664,3 +664,16 @@ let-env config = {
 source ~/.cache/starship/init.nu
 
 alias cd.. = cd ..
+
+def rename_files [
+  matching: string # What to search for in file names
+  to: string # What the matching part of the file name should be replaced with
+] {
+  let matches = (fd $matching | lines)
+  print $matches
+  let answer = (input "Rename all files? (y/n/o):")
+
+  if $answer == "y" {
+    $matches | par-each {|line| $line | str replace $matching $to | mv $line $in}
+  }
+}
