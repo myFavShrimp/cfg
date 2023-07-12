@@ -13,8 +13,8 @@ links:
   - os: [linux]
     destination: ~/.config
     items:
-      - name: helix
-        path: .config/helix
+      - name: nushell
+        path: .config/nushell
   # nushell macos
   - os: [macos]
     destination: "~/Library/Application Support/"
