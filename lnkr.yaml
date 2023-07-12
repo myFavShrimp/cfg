@@ -1,0 +1,23 @@
+links:
+  - os: [linux, macos]
+    destination: ~/.config
+    items:
+      - name: helix
+        path: .config/helix
+      - name: alacritty
+        path: .config/alacritty
+      - name: zellij
+        path: .config/zellij
+
+  # nushell linux
+  - os: [linux]
+    destination: ~/.config
+    items:
+      - name: helix
+        path: .config/helix
+  # nushell macos
+  - os: [macos]
+    destination: "~/Library/Application Support/"
+    items:
+      - name: nushell
+        path: .config/nushell
