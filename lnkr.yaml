@@ -9,6 +9,13 @@ links:
       - name: zellij
         path: .config/zellij
 
+  # delta as git diff pager
+  - os: [linux, macos]
+    destination: ~/
+    items:
+      - name: .gitconfig
+        path: gitconfig
+
   # nushell linux
   - os: [linux]
     destination: ~/.config
