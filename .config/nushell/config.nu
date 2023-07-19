@@ -160,7 +160,8 @@ source ~/.cache/starship/init.nu
 
 alias cd.. = cd ..
 
-def rename_files [
+# Search files by name and replace matching part
+def "files rename" [
   matching: string # What to search for in file names
   to: string # What the matching part of the file name should be replaced with
 ] {
@@ -180,4 +181,17 @@ def "git user" [
 ] {
   git config --local user.name $username
   git config --local user.email $email
+}
+
+# Search files by name and delete them
+def "files remove" [
+  pattern: string # File name pattern to match
+] {
+  let matches = (fd $pattern | lines)
+  print $matches
+  let answer = (input "Rename all files? (y/n/o):")
+
+  if $answer == "y" {
+    $matches | par-each {|line| rm $line}
+  }
 }
