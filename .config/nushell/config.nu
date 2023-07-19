@@ -172,3 +172,12 @@ def rename_files [
     $matches | par-each {|line| $line | str replace $matching $to | mv $line $in}
   }
 }
+
+# Set the username and email of the local git config
+def "git user" [
+  username: string 
+  email: string
+] {
+  git config --local user.name $username
+  git config --local user.email $email
+}
