@@ -30,7 +30,7 @@ links:
         path: .config/nushell
   # macos nix
   - os: [macos]
-    destination: ~/nixpkgs
+    destination: ~/.nixpkgs
     items:
       - name: darwin-configuration.nix
-        path: .config/nixpkgs/darwin-configuration.nix
+        path: .nixpkgs/darwin-configuration.nix
