@@ -189,6 +189,15 @@ def "git add pattern" [
   }
 }
 
+# Set the username and email of the local git config
+def "git user" [
+  username: string 
+  email: string
+] {
+  git config --local user.name $username
+  git config --local user.email $email
+}
+
 # Search files by name and delete them
 def "files remove" [
   pattern: string # File name pattern to match
