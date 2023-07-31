@@ -126,7 +126,7 @@ module completions {
 # Get just the extern definitions without the custom completion commands
 use completions *
 
-let-env config = {
+$env.config = {
   rm: {
     always_trash: false # always act as if -t was given. Can be overridden with -p
   }
