@@ -158,55 +158,6 @@ $env.config = {
 
 source ~/.cache/starship/init.nu
 
-alias cd.. = cd ..
+export use ~/.config/nushell/config/commands.nu *
+export use ~/.config/nushell/config/alias.nu *
 
-# Search files by name and replace matching part
-def "files rename" [
-  matching: string # What to search for in file names
-  to: string # What the matching part of the file name should be replaced with
-] {
-  let matches = (fd $matching | lines)
-  print $matches
-  let answer = (input "Rename all files? (y/n/o):")
-
-  if $answer == "y" {
-    $matches | par-each {|line| $line | str replace $matching $to | mv $line $in}
-  }
-}
-
-# Add file to staging area by pattern
-def "git add pattern" [
-  pattern: string # Pattern to match
-] {
-  let matches = (git ls-files --exclude-standard -mdo | rg $pattern | lines)
-  print $matches
-
-  let answer = (input "Add files to staging area? (y/n/o):")
-
-  if $answer == "y" {
-    git add $matches
-    git status
-  }
-}
-
-# Set the username and email of the local git config
-def "git user" [
-  username: string 
-  email: string
-] {
-  git config --local user.name $username
-  git config --local user.email $email
-}
-
-# Search files by name and delete them
-def "files remove" [
-  pattern: string # File name pattern to match
-] {
-  let matches = (fd $pattern | lines)
-  print $matches
-  let answer = (input "Rename all files? (y/n/o):")
-
-  if $answer == "y" {
-    $matches | par-each {|line| rm $line}
-  }
-}
