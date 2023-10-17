@@ -32,7 +32,8 @@ $env.NU_PLUGIN_DIRS = [
 # To add entries to PATH (on Windows you might use Path), you can use the following pattern:
 # # env.PATH = ($env.PATH | split row (char esep) | prepend '/some/path')
 mkdir ~/.cache/starship
-starship init nu | save -f ~/.cache/starship/init.nu
 
 $env.PATH = ($env.PATH | prepend '~/.cargo/bin')
 $env.EDITOR = "hx"
+
+starship init nu | save -f ~/.cache/starship/init.nu
