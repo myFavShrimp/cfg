@@ -10,6 +10,10 @@
       pkgs.helix
       pkgs.htop
       pkgs.marksman
+      pkgs.gitFull
+      pkgs.maven
+      pkgs.gradle
+      pkgs.jdk11
     ];
 
   # Use a custom configuration.nix location.
