@@ -1,0 +1,4 @@
+[bell]
+animation = "EaseOutSine"
+color = "#bbbbbb"
+duration = 150
