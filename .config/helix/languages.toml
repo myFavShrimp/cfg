@@ -6,12 +6,11 @@ indent = { tab-width = 4, unit = "    " }
 
 [[language]]
 name = "svelte"
-language-server = { command = "yarn", args = ["svelteserver", "--stdio"] }
 indent = { tab-width = 4, unit = "    " }
 
 [[language]]
 name = "javascript"
-language-server = { command = "yarn", args = ["typescript-language-server", "--stdio"], language-id = "javascript" }
+# language-server = { command = "yarn", args = ["typescript-language-server", "--stdio"], language-id = "javascript" }
 indent = { tab-width = 4, unit = "    " }
 
 [[language]]
@@ -20,17 +19,17 @@ indent = { tab-width = 4, unit = "    " }
 
 [[language]]
 name = "jsx"
-language-server = { command = "yarn", args = ["typescript-language-server", "--stdio"], language-id = "javascriptreact" }
+# language-server = { command = "yarn", args = ["typescript-language-server", "--stdio"], language-id = "javascriptreact" }
 indent = { tab-width = 4, unit = "    " }
 
 [[language]]
 name = "typescript"
-language-server = { command = "yarn", args = ["typescript-language-server", "--stdio"], language-id = "typescript" }
+# language-server = { command = "yarn", args = ["typescript-language-server", "--stdio"], language-id = "typescript" }
 indent = { tab-width = 4, unit = "    " }
 
 [[language]]
 name = "tsx"
-language-server = { command = "yarn", args = ["typescript-language-server", "--stdio"], language-id = "typescriptreact" }
+# language-server = { command = "yarn", args = ["typescript-language-server", "--stdio"], language-id = "typescriptreact" }
 indent = { tab-width = 4, unit = "    " }
 
 [[language]]
