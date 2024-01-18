@@ -1,0 +1,7 @@
+[cursor]
+blink_interval = 750
+unfocused_hollow = true
+
+[cursor.style]
+blinking = "Always"
+shape = "Block"
