@@ -15,7 +15,6 @@ rust-tools: # install oxidized tools using the rust toolchain / curl
 	cargo install --locked dotlink
 	cargo install --locked fd-find
 	cargo install --locked nu
-	cargo install --locked just
 	cargo install --locked git-delta
 	rustup component add rust-analyzer
 	
