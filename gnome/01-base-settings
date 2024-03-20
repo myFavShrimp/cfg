@@ -18,15 +18,12 @@ natural-scroll=true
 tap-to-click=true
 two-finger-scrolling-enabled=true
 
-[org/gnome/desktop/privacy]
-report-technical-problems=true
-
 [org/gnome/desktop/sound]
 allow-volume-above-100-percent=true
 event-sounds=true
 
-[org/gnome/mutter]
-experimental-features=['scale-monitor-framebuffer']
+# [org/gnome/mutter]
+# experimental-features=['scale-monitor-framebuffer']
 
 [org/gnome/nautilus/icon-view]
 captions=['permissions', 'none', 'none']
