@@ -1,3 +1,4 @@
 .config/nushell/history.txt
+.config/nushell/history.sqlite*
 .DS_Store
 result
