@@ -12,7 +12,8 @@ sudo dnf install akmod-nvidia # rhel/centos users can use kmod-nvidia instead
 sudo dnf install xorg-x11-drv-nvidia-cuda #optional for cuda/nvdec/nvenc support
 
 # project dependencies and necessary libraries
-sudo dnf install perl-FindBin perl-IPC-Cmd perl-File-Compare perl-File-Copy
+sudo dnf install perl-FindBin perl-IPC-Cmd perl-File-Compare perl-File-Copy podman-compose
+sudo dnf swap ffmpeg-free ffmpeg --allowerasing -y
 
 # helix
 sudo dnf copr enable varlad/helix
