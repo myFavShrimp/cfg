@@ -156,8 +156,6 @@ $env.config = {
   edit_mode: emacs # emacs, vi
 }
 
-source ~/.cache/starship/init.nu
-
 export use ~/.config/nushell/config/commands.nu *
 export use ~/.config/nushell/config/alias.nu *
 
