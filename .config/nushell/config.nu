@@ -153,7 +153,7 @@ $env.config = {
     vi_normal: underscore # block, underscore, line, blink_block, blink_underscore, blink_line (underscore is the default)
   }
   bracketed_paste: true # enable bracketed paste, currently useless on windows
-  edit_mode: emacs # emacs, vi
+  edit_mode: vi # emacs, vi
 }
 
 export use ~/.config/nushell/config/commands.nu *
