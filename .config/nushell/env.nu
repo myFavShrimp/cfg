@@ -30,7 +30,7 @@ $env.NU_PLUGIN_DIRS = [
 ]
 
 def create_upper_part [] {
-    # prompt parts
+    # time part
 
     let time_part = (date now | format date '%x %X')
     let time_part_length = ($time_part | str length) + 2
@@ -69,13 +69,26 @@ def create_upper_part [] {
     } else {null}
     let cmd_part_length = if ($cmd_part != null) {($cmd_part | str length) + 2} else {0}
 
+    # git part
+
+    let current_branch = (do { git branch --show-current } | complete).stdout | str trim --char "\n"
+    let current_branch_length = if ($current_branch != "") {($current_branch | str length) + 2} else {0}
+
     # divider
 
-    let section_divider = 1..((term size).columns - $time_part_length - $cmd_part_length)
+    let section_divider = 1..((term size).columns - $time_part_length - $cmd_part_length - $current_branch_length)
         | each {|_| "-"}
         | str join
 
     # formatted parts
+
+    let formatted_current_branch = if ($current_branch != "") {
+        [
+            (ansi reset) "{"
+            (ansi yellow) $current_branch
+            (ansi reset) "}"
+        ] | str join
+    } else {null}
 
     let formatted_cmd_part = if ($cmd_part != null) {
         [
@@ -91,7 +104,7 @@ def create_upper_part [] {
         (ansi reset) "]"
     ] | str join
 
-    [(ansi reset), $section_divider, $formatted_cmd_part, ($formatted_time_part)] | str join
+    [(ansi reset), $section_divider, $formatted_current_branch, $formatted_cmd_part, $formatted_time_part] | str join
 }
 
 def create_lower_part [] {
