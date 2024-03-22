@@ -8,7 +8,7 @@ export def "git add pattern" [
   let answer = (input "Add files to staging area? (y/n/o):")
 
   if $answer == "y" {
-    git add $matches
+    git add ($matches | str join)
     git status
   }
 }
