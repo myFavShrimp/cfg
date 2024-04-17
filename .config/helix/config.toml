@@ -1,7 +1,7 @@
 theme = "gruvbox_dark_hard_modified"
 
 [editor]
-# shell = ["~/.cargo/bin/nu", "--login"]
+shell = ["nu", "--stdin", "-c"]
 line-number = "relative"
 cursorline = true
 rulers = [
