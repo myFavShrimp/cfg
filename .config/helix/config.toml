@@ -1,7 +1,7 @@
 theme = "gruvbox_dark_hard_modified"
 
 [editor]
-shell = ["nu", "--stdin", "-c"]
+shell = ["nu", "--no-newline", "--stdin", "-c"]
 line-number = "relative"
 cursorline = true
 rulers = [
