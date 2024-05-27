@@ -1,3 +1,26 @@
+[language-server.intelephense]
+
+[[language]]
+name = "php"
+
+[language.debugger]
+name = "vscode-php-debug"
+transport = "stdio"
+command = "node"
+args = ["/Users/denis.wollgramm/.vscode-oss/extensions/xdebug.php-debug-1.34.0-universal/out/phpDebug.js"]
+
+[[language.debugger.templates]]
+name = "Listen for XDebug"
+request = "launch"
+completion = ["ignored"]
+args = {}
+# args = { serverSourceRoot = "", localSourceRoot = "" }
+
+# [[language]]
+# name = "python"
+# language-servers = [ "pylyzer" ]
+# roots = ["mypy.ini"]
+
 [[language]]
 name = "swift"
 # language-server = { command = "sourcekit-lsp", args = ["-Xswiftc", "-sdk", "-Xswiftc", "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator.sdk", "-Xswiftc", "-target", "-Xswiftc", "x86_64-apple-ios16.2-simulator"] } 
