@@ -56,14 +56,15 @@ def "nu-complete git checkout" [] {
   (nu-complete git local branches)
   | parse "{value}"
   | insert description "local branch"
+  | append [["value" "description"]; ["############################## non-local: ##############################", ""]]
   | append (nu-complete git remote branches nonlocal without prefix
             | parse "{value}"
             | insert description "remote branch")
-  | append (nu-complete git remote branches with prefix
-            | parse "{value}"
-            | insert description "remote branch")
-  | append (nu-complete git commits all)
-  | append (nu-complete git files | where description != "Untracked" | select value)
+  # | append (nu-complete git remote branches with prefix
+  #           | parse "{value}"
+  #           | insert description "remote branch")
+  # | append (nu-complete git commits all)
+  # | append (nu-complete git files | where description != "Untracked" | select value)
 }
 
 # Arguments to `git rebase --onto <arg1> <arg2>`
