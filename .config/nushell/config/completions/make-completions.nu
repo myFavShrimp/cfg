@@ -9,6 +9,8 @@ def "nu-complete make" [] {
 	| get column1 
 	| find ':' 
 	| str replace ':' ''
+	| str trim
+	| ansi strip
 }
 
 def "nu-complete make jobs" [] {
