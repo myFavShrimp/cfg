@@ -1,1 +1,2 @@
+[general]
 import = ["~/.config/alacritty/current_theme.toml", "~/.config/alacritty/window.toml", "~/.config/alacritty/font.toml", "~/.config/alacritty/bell.toml", "~/.config/alacritty/cursor.toml"]
