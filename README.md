@@ -1,3 +1,3 @@
 ## cfg
 
-My dotfiles and additional configs for my devices. Using [lnkr](https://github.com/myFavShrimp/lnkr) to create symlinks based on the `lnkr.yaml`.
+My dotfiles and additional configs for my devices. Using [arc](https://github.com/myFavShrimp/arc) to setup and configure based on the `arc.lua`.
