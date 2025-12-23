@@ -9,3 +9,5 @@ require("application/config")
 require("application/rust")
 require("application/rust_tools")
 require("application/flatpaks")
+
+require("system/fonts")
