@@ -14,4 +14,8 @@ function helpers.execute_commands(system, ...)
     end
 end
 
+function helpers.trim_whitespace(text)
+    return text:gsub("^%s*(.-)%s*$", "%1")
+end
+
 return helpers
