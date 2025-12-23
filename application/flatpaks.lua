@@ -11,6 +11,7 @@ local flatpaks = {
     "org.mozilla.Thunderbird",
     "org.signal.Signal",
     "rest.insomnia.Insomnia",
+    "com.nitrokey.nitrokey-app2",
 }
 
 tasks["install_flatpaks"] = {
