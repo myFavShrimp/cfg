@@ -4,7 +4,8 @@ targets.systems["local-system"] = {
 
 require("system/fedora")
 
+require("application/dnf")
+require("application/config")
 require("application/rust")
 require("application/rust_tools")
 require("application/flatpaks")
-require("application/config")

@@ -28,10 +28,7 @@ tasks["setup_fedora"] = {
         local commands = {
             "sudo dnf update -y",
             "sudo dnf install https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm",
-            "sudo dnf install perl-FindBin perl-IPC-Cmd perl-File-Compare perl-File-Copy podman-compose",
             "sudo dnf swap ffmpeg-free ffmpeg --allowerasing -y",
-            "sudo dnf group install development-tools -y",
-            "sudo dnf install helix -y",
         }
 
         helpers.execute_commands(system, unpack(commands))

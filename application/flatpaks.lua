@@ -15,9 +15,17 @@ local flatpaks = {
 
 tasks["install_flatpaks"] = {
     handler = function(system)
+        local commands = {}
+
+        for _, flatpak in ipairs(flatpaks) do
+            local install_command = "flatpak install --reinstall --noninteractive flathub " .. flatpak
+
+            table.insert(commands, install_command)
+        end
+
         helpers.execute_commands(
             system,
-            "flatpak install --reinstall --noninteractive flathub " .. table.concat(flatpaks, " ")
+            unpack(commands)
         )
     end,
 }
