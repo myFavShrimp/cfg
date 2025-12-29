@@ -3,7 +3,7 @@ local helpers = require("helpers")
 tasks["check_is_fedora"] = {
     handler = function(system)
         local result = system:run_command("cat /etc/os-release")
-        
+
         if string.find(result.stdout, "ID=fedora") then
             log.info("fedora system detected")
 
@@ -18,6 +18,9 @@ tasks["check_is_fedora"] = {
 }
 
 tasks["setup_fedora"] = {
+    when = function()
+        return tasks["check_is_fedora"].result == true
+    end,
     handler = function(system)
         local is_fedora = tasks["check_is_fedora"].result
 
@@ -33,5 +36,4 @@ tasks["setup_fedora"] = {
 
         helpers.execute_commands(system, unpack(commands))
     end,
-    dependencies = { "check_is_fedora" },
 }

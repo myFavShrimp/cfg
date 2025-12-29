@@ -24,5 +24,4 @@ tasks["install_rust_tools"] = {
 
         helpers.execute_commands(system, unpack(commands))
     end,
-    dependencies = { "install_rust" },
 }

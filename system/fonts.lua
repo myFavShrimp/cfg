@@ -3,9 +3,12 @@ local helpers = require("helpers")
 local user_fonts_dir = "~/.local/share/fonts"
 
 tasks["install_fonts"] = {
+    when = function()
+        return tasks["detect_os"].result == "linux"
+    end,
     handler = function(system)
         local current_os = tasks["detect_os"].result
-        
+
         if current_os ~= "linux" then
             log.error("Not setting up fonts. System is not linux.")
             return
@@ -23,5 +26,4 @@ tasks["install_fonts"] = {
 
         helpers.execute_commands(system, unpack(commands))
     end,
-    dependencies = { "detect_os" },
 }

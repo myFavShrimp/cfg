@@ -48,12 +48,11 @@ tasks["detect_os"] = {
 }
 
 tasks["build_symlink_config"] = {
-    handler = function(system)
+    when = function()
+        return tasks["detect_os"].result ~= nil
+    end,
+    handler = function()
         local current_os = tasks["detect_os"].result
-        
-        if not current_os then
-            return
-        end
 
         local cfg_repo_path = helpers.trim_whitespace(host:run_command("pwd").stdout)
 
@@ -76,14 +75,11 @@ tasks["build_symlink_config"] = {
 
         return links
     end,
-    dependencies = { "detect_os" },
 }
 
 tasks["symlink_configs"] = {
     handler = function(system)
         local symlink_config = tasks["build_symlink_config"].result
-
-        local cfg_repo_path = helpers.trim_whitespace(host:run_command("pwd").stdout)
 
         local link_commands = {}
         for _, link in ipairs(symlink_config) do
@@ -96,5 +92,4 @@ tasks["symlink_configs"] = {
 
         helpers.execute_commands(system, unpack(link_commands))
     end,
-    dependencies = { "build_symlink_config" },
 }

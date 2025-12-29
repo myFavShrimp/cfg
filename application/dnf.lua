@@ -11,13 +11,10 @@ local packages = {
 }
 
 tasks["install_dnf_packages"] = {
+    when = function()
+        return tasks["check_is_fedora"].result == true
+    end,
     handler = function(system)
-        local is_fedora = tasks["check_is_fedora"].result
-
-        if not is_fedora then
-            return
-        end
-
         local commands = {
             "sudo dnf group install development-tools -y",
         }
@@ -30,5 +27,4 @@ tasks["install_dnf_packages"] = {
 
         helpers.execute_commands(system, unpack(commands))
     end,
-    dependencies = { "check_is_fedora" },
 }

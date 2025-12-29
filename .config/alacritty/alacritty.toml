@@ -1,2 +1,11 @@
 [general]
-import = ["~/.config/alacritty/current_theme.toml", "~/.config/alacritty/window.toml", "~/.config/alacritty/font.toml", "~/.config/alacritty/bell.toml", "~/.config/alacritty/cursor.toml"]
+import = [
+    "~/.config/alacritty/current_theme.toml",
+    "~/.config/alacritty/window.toml",
+    "~/.config/alacritty/font.toml",
+    "~/.config/alacritty/bell.toml",
+    "~/.config/alacritty/cursor.toml",
+]
+
+[terminal]
+shell = { program = "/home/denis/.cargo/bin/nu", args = ["-l"] }
