@@ -5,7 +5,7 @@ tasks["obtain_user"] = {
         local id_command_result = system:run_command("id -un")
 
         if id_command_result.exit_code ~= 0 then
-            error("`id` command returned and error: " .. id_command_result.stderr)
+            error("`id` command returned an error: " .. id_command_result.stderr)
         end
 
         return helpers.trim_whitespace(id_command_result.stdout)
