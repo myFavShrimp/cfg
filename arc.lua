@@ -2,6 +2,8 @@ targets.systems["local-system"] = {
     type = "local"
 }
 
+require("important")
+
 require("system/fedora")
 
 require("application/dnf")

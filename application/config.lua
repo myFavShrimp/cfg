@@ -33,20 +33,6 @@ local link_config = {
     }
 }
 
-tasks["detect_os"] = {
-    handler = function(system)
-        local os_result = system:run_command("uname -s")
-
-        if os_result.stdout:find("Linux") then
-            return "linux"
-        elseif os_result.stdout:find("Darwin") then
-            return "macos"
-        else
-            return
-        end
-    end,
-}
-
 tasks["build_symlink_config"] = {
     when = function()
         return tasks["detect_os"].result ~= nil
