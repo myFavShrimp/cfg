@@ -1,5 +1,5 @@
 ---@meta _
----Type definitions for Arc
+---Type definitions for arc v0.7.0
 
 ---@class CommandResult
 ---@field stdout string The command output
@@ -9,24 +9,24 @@
 
 ---@class FileMetadata
 ---@field path string Path to the file or directory
----@field size integer Size in bytes
----@field permissions integer Permission mode as number
+---@field size integer|nil Size in bytes (nil if unavailable)
+---@field permissions integer|nil Permission mode as number (nil if unavailable)
 ---@field type "file"|"directory"|"unknown" Type of the item
----@field uid integer User ID of the owner
----@field gid integer Group ID of the owner
----@field accessed integer Last access time as Unix timestamp
----@field modified integer Last modification time as Unix timestamp
+---@field uid integer|nil User ID of the owner (always nil on local systems)
+---@field gid integer|nil Group ID of the owner (always nil on local systems)
+---@field accessed integer|nil Last access time as Unix timestamp (nil if unavailable)
+---@field modified integer|nil Last modification time as Unix timestamp (nil if unavailable)
 
 
 ---@class File
 ---@field path string Path to the file (can be read and set, setting renames the file)
----@field file_name string The name of the file without the directory path
----@field content string Text content of the file (can be read and set)
----@field permissions integer File permissions (can be read and set as numeric mode)
+---@field file_name string The name of the file without the directory path (can be read and set; setting renames the file)
+---@field content string Binary content of the file (can be read and set)
+---@field permissions integer|nil File permissions (can be read and set as numeric mode; nil if file doesn't exist)
 local File = {}
 
----Get file metadata
----@return FileMetadata metadata File metadata information
+---Get file metadata. Returns nil if the file does not exist.
+---@return FileMetadata|nil metadata File metadata information, or nil if file doesn't exist
 function File:metadata() end
 
 ---Remove the file
@@ -36,15 +36,15 @@ function File:remove() end
 ---@return boolean exists True if file exists
 function File:exists() end
 
----Get the directory containing this file
----@return Directory directory Directory object
+---Get the directory containing this file. Returns nil if at root path.
+---@return Directory|nil directory Directory object, or nil if at root
 function File:directory() end
 
 
 ---@class Directory
 ---@field path string Path to the directory (can be read and set, setting renames the directory)
----@field file_name string The name of the directory without the parent path
----@field permissions integer Directory permissions (can be read and set as numeric mode)
+---@field file_name string The name of the directory without the parent path (can be read and set)
+---@field permissions integer|nil Directory permissions (can be read and set as numeric mode; nil if directory doesn't exist)
 local Directory = {}
 
 ---Create the directory
@@ -53,16 +53,20 @@ function Directory:create() end
 ---Remove the directory
 function Directory:remove() end
 
----Get directory metadata
----@return FileMetadata metadata Directory metadata information
+---Check if directory exists
+---@return boolean exists True if directory exists
+function Directory:exists() end
+
+---Get directory metadata. Returns nil if the directory does not exist.
+---@return FileMetadata|nil metadata Directory metadata information, or nil if directory doesn't exist
 function Directory:metadata() end
 
 ---Get directory entries
 ---@return (File|Directory)[] entries Array of File and Directory objects representing the directory contents
 function Directory:entries() end
 
----Get the parent directory
----@return Directory parent Parent directory object
+---Get the parent directory. Returns nil if at root path.
+---@return Directory|nil parent Parent directory object, or nil if at root
 function Directory:parent() end
 
 
@@ -125,9 +129,9 @@ function LocalSystem:directory(path) end
 ---@field when? fun(): boolean Guard predicate to determine if task should run (check previous task states/results)
 ---@field on_fail? FailureBehavior Behavior when this task fails (default: "continue")
 ---@field tags? string[] Array of tags associated with the task, used for filtering
----@field groups? string[] Array of group names this task should run on
----@field dependencies? string[] Array of tags that this task depends on
----@field important? boolean If true, task always runs regardless of tag filters, --no-deps, and skip_system
+---@field targets? string[] Array of group or system names this task should run on
+---@field requires? string[] Array of tags that this task requires
+---@field important? boolean If true, task always runs regardless of tag filters, --no-reqs, and skip_system
 ---@field result? any The result of the task execution (available after execution)
 ---@field state? TaskState State of the task after execution
 ---@field error? string Error message if the task failed
@@ -174,7 +178,7 @@ function Env.get(var_name) end
 ---@type EnvModule
 env = {}
 
---- Global host class for aaccessing the host system
+--- Global host class for accessing the host system
 ---@class Host
 local Host = {}
 
@@ -193,7 +197,7 @@ function Host:file(path) end
 ---@return Directory directory Directory object
 function Host:directory(path) end
 
---- Global host instance for aaccessing the host system
+--- Global host instance for accessing the host system
 ---@type Host
 host = {}
 

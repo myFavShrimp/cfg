@@ -1,4 +1,4 @@
-targets.systems["local-system"] = {
+targets.systems["local"] = {
     type = "local"
 }
 

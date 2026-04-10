@@ -8,6 +8,8 @@ local packages = {
     "podman-compose",
     "helix",
     "alacritty",
+    "nodejs",
+    "nodejs-bash-language-server",
 }
 
 tasks["install_dnf_packages"] = {

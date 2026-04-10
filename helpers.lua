@@ -4,7 +4,6 @@ function helpers.execute_commands(system, ...)
     local commands = {...}
 
     for _, command in ipairs(commands) do
-        log.debug("Running command '" .. command .."'")
         local result = system:run_command(command)
 
         if result.exit_code ~= 0 then

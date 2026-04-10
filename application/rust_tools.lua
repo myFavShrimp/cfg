@@ -18,6 +18,7 @@ tasks["install_rust_tools"] = {
             "cargo binstall -y trunk",
             "cargo binstall -y sqlx-cli",
             "cargo binstall -y cargo-watch",
+            "cargo binstall -y cargo-expand",
 
             "rustup component add rust-analyzer",
         }
