@@ -30,6 +30,14 @@ local link_config = {
         items = {
             { name = "nushell", path = ".config/nushell" }
         }
+    },
+    {
+        os = { "linux", "macos" },
+        destination = "~/.claude",
+        items = {
+            { name = "CLAUDE.md", path = ".claude/CLAUDE.md" },
+            { name = "notes", path = ".claude/notes" }
+        }
     }
 }
 
