@@ -12,6 +12,7 @@
 @~/.claude/notes/code_style/minimal-comments.md
 @~/.claude/notes/code_style/blank-line-before-return.md
 @~/.claude/notes/code_style/prefer-source-of-truth.md
+@~/.claude/notes/code_style/no-em-dash.md
 
 ## Rust
 
@@ -24,6 +25,7 @@
 
 ## HyperStim
 
+@~/.claude/notes/hyperstim/read-readme.md
 @~/.claude/notes/hyperstim/attributes-are-expressions-only.md
 @~/.claude/notes/hyperstim/commas-not-semicolons.md
 @~/.claude/notes/hyperstim/no-form-wrapper-for-buttons.md
@@ -31,6 +33,7 @@
 
 ## arc (automation tool)
 
+@~/.claude/notes/arc/read-readme.md
 @~/.claude/notes/arc/task-patterns.md
 @~/.claude/notes/arc/consolidate-collection-tasks.md
 
