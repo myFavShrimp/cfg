@@ -241,3 +241,5 @@ Toasts are reserved for errors, and only when no inline display is viable.
 ## Notes
 
 @~/.claude/notes/global-memories.md
+
+@~/.claude/notes/builtin-agents-use-opus.md
