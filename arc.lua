@@ -7,6 +7,7 @@ require("important")
 require("system/fedora")
 
 require("application/dnf")
+require("application/brew")
 require("application/config")
 require("application/rust")
 require("application/rust_tools")

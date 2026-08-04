@@ -13,6 +13,23 @@ tasks["detect_os"] = {
     important = true,
 }
 
+tasks["check_is_macos"] = {
+    handler = function(system)
+        local result = system:run_command("uname -s")
+
+        if string.find(result.stdout, "Darwin") then
+            log.info("macos system detected")
+
+            return true
+        else
+            log.info("system is not macos")
+
+            return false
+        end
+    end,
+    important = true,
+}
+
 tasks["check_is_fedora"] = {
     handler = function(system)
         local result = system:run_command("cat /etc/os-release")

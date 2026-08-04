@@ -1,4 +1,6 @@
 .config/nushell/history.txt
 .config/nushell/history.sqlite*
+.config/alacritty/terminal.toml
+.config/alacritty/font-size.toml
 .DS_Store
 result

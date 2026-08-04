@@ -11,6 +11,22 @@ local link_config = {
         }
     },
     {
+        os = { "linux" },
+        destination = "~/.config/alacritty",
+        items = {
+            { name = "terminal.toml", path = ".config/alacritty/terminal-linux.toml" },
+            { name = "font-size.toml", path = ".config/alacritty/font-size-linux.toml" }
+        }
+    },
+    {
+        os = { "macos" },
+        destination = "~/.config/alacritty",
+        items = {
+            { name = "terminal.toml", path = ".config/alacritty/terminal-macos.toml" },
+            { name = "font-size.toml", path = ".config/alacritty/font-size-macos.toml" }
+        }
+    },
+    {
         os = { "linux", "macos" },
         destination = "~",
         items = {
@@ -26,7 +42,7 @@ local link_config = {
     },
     {
         os = { "macos" },
-        destination = "~/Library/Application Support/",
+        destination = "~/Library/Application\\ Support",
         items = {
             { name = "nushell", path = ".config/nushell" }
         }
