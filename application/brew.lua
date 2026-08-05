@@ -6,7 +6,6 @@ local packages = {
 }
 
 tasks["check_brew_installed"] = {
-    important = true,
     when = function()
         return tasks["check_is_macos"].result == true
     end,
@@ -26,6 +25,7 @@ tasks["check_brew_installed"] = {
 }
 
 tasks["install_brew"] = {
+    requires = {"check_brew_installed"},
     when = function()
         return tasks["check_is_macos"].result == true and tasks["check_brew_installed"].result == false
     end,
