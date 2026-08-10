@@ -14,5 +14,6 @@ require("application/rust_tools")
 require("application/flatpaks")
 require("application/docker")
 require("application/deno")
+require("application/node")
 
 require("system/fonts")

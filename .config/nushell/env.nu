@@ -137,7 +137,15 @@ $env.PROMPT_COMMAND_RIGHT = {|| null}
 # To add entries to PATH (on Windows you might use Path), you can use the following pattern:
 # # env.PATH = ($env.PATH | split row (char esep) | prepend '/some/path')
 
-let macos_paths = if $nu.os-info.name == "macos" { ["/opt/homebrew/bin", "/opt/homebrew/sbin"] } else { [] }
+let macos_paths = if $nu.os-info.name == "macos" {
+    ["/opt/homebrew/bin", "/opt/homebrew/sbin"]
+} else {
+    []
+}
+
+if $nu.os-info.name == "macos" {
+    $env.DENO_TLS_CA_STORE = "system"
+}
 
 let paths_to_prepend = [
     "~/.local/bin"

@@ -9,16 +9,20 @@ tasks["install_deno"] = {
     end
 }
 
-tasks["install_intelephense"] = {
-    when = function ()
-        return tasks["install_deno"].state == "success"
-    end,
-    handler = function (system)
-        local install_result = system:run_command("deno install -Af -g npm:intelephense")
+local global_packages = {
+    "npm:intelephense",
+    "npm:bash-language-server",
+}
 
-        if install_result.exit_code ~= 0 then
-            log.error(install_result.stderr)
-            error("installation returned an error: " .. install_result.stderr)
+tasks["install_global_deno_packages"] = {
+    handler = function (system)
+        for _, global_package in ipairs(global_packages) do
+            local install_result = system:run_command("deno install -Af -g " .. global_package)
+
+            if install_result.exit_code ~= 0 then
+                log.error(install_result.stderr)
+                error("installation returned an error: " .. install_result.stderr)
+            end
         end
     end
 }
