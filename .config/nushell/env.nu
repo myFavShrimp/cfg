@@ -137,8 +137,14 @@ $env.PROMPT_COMMAND_RIGHT = {|| null}
 # To add entries to PATH (on Windows you might use Path), you can use the following pattern:
 # # env.PATH = ($env.PATH | split row (char esep) | prepend '/some/path')
 
+# php and mysql-client are keg-only, so brew does not link them into /opt/homebrew/bin.
 let macos_paths = if $nu.os-info.name == "macos" {
-    ["/opt/homebrew/bin", "/opt/homebrew/sbin"]
+    [
+        "/opt/homebrew/bin"
+        "/opt/homebrew/sbin"
+        "/opt/homebrew/opt/php@8.4/bin"
+        "/opt/homebrew/opt/mysql-client/bin"
+    ]
 } else {
     []
 }

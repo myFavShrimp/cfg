@@ -3,6 +3,8 @@ local helpers = require("helpers")
 local packages = {
     "helix",
     "openssl",
+    "php@8.4",
+    "mysql-client",
 }
 
 tasks["check_brew_installed"] = {
