@@ -1,3 +1,8 @@
+---
+name: rust
+description: Personal Rust guidelines. Use when writing or reviewing Rust code.
+---
+
 When using `thiserror`, do not add per-variant `#[error("...")]` messages on enum variants. Instead, define a separate error struct for each failure mode and reference it via `#[from]` on the variant. The enum gets a single top-level `#[error]` covering the whole operation.
 
 **Example:**

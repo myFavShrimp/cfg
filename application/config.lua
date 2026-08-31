@@ -53,7 +53,8 @@ local link_config = {
         items = {
             { name = "CLAUDE.md", path = ".claude/CLAUDE.md" },
             { name = "settings.json", path = ".claude/settings.json" },
-            { name = "notes", path = ".claude/notes" }
+            { name = "notes", path = ".claude/notes" },
+            { name = "skills", path = ".claude/skills" }
         }
     }
 }
