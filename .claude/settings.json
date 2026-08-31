@@ -1,0 +1,9 @@
+{
+  "model": "opus[1m]",
+  "effortLevel": "low",
+  "theme": "dark",
+  "claudeMdExcludes": [ ],
+  "enabledPlugins": {
+    "php-lsp@claude-plugins-official": true
+  }
+}
