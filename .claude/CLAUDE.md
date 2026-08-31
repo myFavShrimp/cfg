@@ -5,6 +5,7 @@
 @~/.claude/notes/approach/ask-before-saving-memory.md
 @~/.claude/notes/approach/verify-before-claiming.md
 @~/.claude/notes/approach/use-tooling-not-manual-edits.md
+@~/.claude/notes/approach/read-skills-eagerly.md
 
 ## Code style (general)
 
