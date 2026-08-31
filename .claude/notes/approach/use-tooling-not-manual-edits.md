@@ -1,12 +1,6 @@
----
-name: Use the tool's CLI, not manual config edits
-description: Add/remove dependencies, scaffold migrations, generate boilerplate via the official CLI — never hand-edit the underlying config files
-type: feedback
----
-
 When a tool provides a CLI to mutate its config, use the CLI. Do not hand-edit the underlying file.
 
-**Examples:**
+**Examples (the preference is NOT exclusive to those):**
 
 - **Rust dependencies:** `cargo add <crate>` / `cargo remove <crate>` (with `--package <pkg>` in workspaces). Never edit `[dependencies]` in `Cargo.toml` by hand.
 - **Node dependencies:** `npm install <pkg>`, `pnpm add <pkg>`, `bun add <pkg>`. Never edit `package.json` `"dependencies"` by hand.

@@ -1,9 +1,3 @@
----
-name: Separate error types for thiserror enum variants
-description: Don't put a per-variant #[error] message on a thiserror enum — give each failure mode its own error struct and reference it via #[from]
-type: feedback
----
-
 When using `thiserror`, do not add per-variant `#[error("...")]` messages on enum variants. Instead, define a separate error struct for each failure mode and reference it via `#[from]` on the variant. The enum gets a single top-level `#[error]` covering the whole operation.
 
 **Example:**

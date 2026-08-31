@@ -1,9 +1,3 @@
----
-name: HyperStim — use fetch.state() for post-completion logic
-description: Check fetch.state() === 'success' in data-effect to gate post-completion actions; don't add custom flags
-type: feedback
----
-
 HyperStim fetch actions expose `.state()`, which returns `'pending'` during the request and `'success'` on completion. Use this directly — don't add custom boolean flags like `clicked`, `triggered`, `completed`.
 
 **Example:** to close a dialog after a successful POST:

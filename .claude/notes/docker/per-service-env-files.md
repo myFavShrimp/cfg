@@ -1,9 +1,3 @@
----
-name: Per-service env files in compose deployments
-description: For multi-container compose stacks, render one env file per container — never lump all vars into a single shared dotenv
-type: feedback
----
-
 When a compose stack runs multiple containers (postgres + backend + frontend + worker, etc.), generate **one env file per container** and reference each from the matching `env_file:` block in the compose template. Don't lump all variables into a single shared dotenv.
 
 **Example layout:**

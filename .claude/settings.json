@@ -2,7 +2,9 @@
   "model": "opus[1m]",
   "effortLevel": "low",
   "theme": "dark",
-  "claudeMdExcludes": [ ],
+  "claudeMdExcludes": [
+    "/Users/*/Development/**",
+  ],
   "enabledPlugins": {
     "php-lsp@claude-plugins-official": true
   }

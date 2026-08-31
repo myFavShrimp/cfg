@@ -1,9 +1,3 @@
----
-name: No abbreviations in identifier names
-description: Spell variable, function, and parameter names out fully — no shortened forms
-type: feedback
----
-
 Use full, descriptive identifier names. Do not abbreviate.
 
 **Examples:**

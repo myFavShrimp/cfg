@@ -1,9 +1,3 @@
----
-name: Prefer the authoritative source over heuristics
-description: Don't infer information from filename/extension/naming patterns when the real source of truth is queryable
-type: feedback
----
-
 Never use heuristics to infer information that can be queried directly from the authoritative source.
 
 **Examples:**

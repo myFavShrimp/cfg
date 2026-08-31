@@ -1,9 +1,3 @@
----
-name: Verify before claiming
-description: Don't claim flags, behavior, or APIs exist without verifying; admit mistakes plainly when wrong
-type: feedback
----
-
 Before stating that a CLI flag, library function, API endpoint, or behavior exists, verify it against the actual source/docs. Do not extrapolate from sibling commands or from prior knowledge of similar tools.
 
 **Examples of bad inference to avoid:**

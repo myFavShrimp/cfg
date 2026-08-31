@@ -1,9 +1,3 @@
----
-name: arc — consolidate collection operations into a single looping task
-description: When an operation runs across N items, write one task whose handler loops, not N generated tasks
-type: feedback
----
-
 In `arc.lua`, when an operation naturally fans out across a collection (multiple Docker images, multiple services, multiple files to render), prefer **one task that iterates internally** over generating N tasks via a `for ... do tasks[...] = {...} end` block.
 
 **Yes:**

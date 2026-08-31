@@ -1,9 +1,3 @@
----
-name: arc — use idiomatic task patterns
-description: Use important tasks + when guards for conditional execution; don't parse run_command output for control flow
-type: feedback
----
-
 When writing `arc.lua` automation, follow the idiomatic patterns:
 
 - Use `important = true` tasks for detection/checks that return results.

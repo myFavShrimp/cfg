@@ -1,9 +1,3 @@
----
-name: HyperStim attributes accept expressions, not statements
-description: data-init, data-on-*, data-effect, data-show, etc. evaluate as JavaScript expressions — no `if`, `for`, `while`, `return`, or other statements
-type: feedback
----
-
 HyperStim data attributes are evaluated as JavaScript **expressions**, not statements. Constructs like `if`, `for`, `while`, `return`, `let`, and `const` will error at evaluation time.
 
 **Conditional logic — use expression forms:**
