@@ -14,6 +14,7 @@
 @~/.claude/notes/code_style/blank-line-before-return.md
 @~/.claude/notes/code_style/prefer-source-of-truth.md
 @~/.claude/notes/code_style/no-em-dash.md
+@~/.claude/notes/code_style/prefer-readability-over-performance.md
 
 ## CSS / SCSS
 
