@@ -2,6 +2,7 @@
   "model": "opus[1m]",
   "effortLevel": "low",
   "theme": "dark",
+  "tui": "fullscreen",
   "claudeMdExcludes": [
     "/Users/*/Development/**"
   ],
