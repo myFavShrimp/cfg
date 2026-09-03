@@ -1,0 +1,5 @@
+[submodule ".claude/skills/dzh"]
+	path = .claude/skills/dzh
+	url = git@git.dzh.hamburg:karlos/ai-lab.git
+	branch = denis
+	ignore = all
