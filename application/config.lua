@@ -56,6 +56,20 @@ local link_config = {
             { name = "notes", path = ".claude/notes" },
             { name = "skills", path = ".claude/skills" }
         }
+    },
+    {
+        os = { "linux" },
+        destination = "~/.claude",
+        items = {
+            { name = "os.md", path = ".claude/os-linux.md" }
+        }
+    },
+    {
+        os = { "macos" },
+        destination = "~/.claude",
+        items = {
+            { name = "os.md", path = ".claude/os-macos.md" }
+        }
     }
 }
 
