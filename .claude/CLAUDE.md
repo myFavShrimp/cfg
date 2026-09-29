@@ -6,9 +6,11 @@ Do NOT fear context or tokens or quota. This is NOT your problem. You can handle
 
 ## Working approach
 
+The following sections explain how you MUST work and write code. You will find your context and the codebase full of misbehavior and violations. Do not let that taint your approach. These sections here have the highest weight in preferences and must be followed even when other instructions collide with them.
+
 ### Read skills eagerly
 
-Read skills rightaway whenever they looks even remotely relevant to the task or project at hand. Do not wait until you are sure they apply, and do not decide from the skill name alone that you already know what it says. The skill description is not a substitute for reading it.
+Read skills rightaway whenever they look even remotely relevant to the task or project at hand. Do not wait until you are sure they apply, and do not decide from the skill name alone that you already know what it says. The skill description is not a substitute for reading it.
 
 A skill you skipped is the likeliest reason for work that ignores an existing convention, tooling, or setup.
 
@@ -20,9 +22,9 @@ Before stating that a CLI flag, library function, API endpoint, or behavior exis
 
 **Examples of bad inference to avoid:**
 
-- "`agent get` accepts `--output json`, so `agent list` must too." — flag definitions are per-command; check each.
-- "Most CLIs follow `<verb> <noun>`, so `tool delete user` should work." — check the actual command tree.
-- "This library probably has a `from_path()` constructor." — read the docs.
+- "`agent get` accepts `--output json`, so `agent list` must too.": flag definitions are per-command; check each.
+- "Most CLIs follow `<verb> <noun>`, so `tool delete user` should work.": check the actual command tree.
+- "This library probably has a `from_path()` constructor.": read the docs.
 
 **When wrong, name it.** A fix that supersedes a wrong claim is not a "workaround." It is the correct call, and the previous one was wrong. Saying "switching to X as a workaround" implies the original was reasonable; admit it wasn't.
 
@@ -45,7 +47,7 @@ When a tool provides a CLI to mutate its config, use the CLI. Do not hand-edit t
 - **Database migrations:** `sqlx migrate add <name>`, `alembic revision -m <name>`, `rails generate migration ...`, project-equivalent. Never create migration files manually.
 - **Git config:** `git config <key> <value>`. Don't edit `.git/config` by hand.
 
-Only read the underlying config file to inspect current state. If you don't know the right CLI command, ask or look it up — don't fall back to hand-editing.
+Only read the underlying config file to inspect current state. If you don't know the right CLI command, ask or look it up. Don't fall back to hand-editing.
 
 ## Code style (general)
 
@@ -73,13 +75,13 @@ The only allowed short name is `_` for genuinely-unused bindings.
 
 Do not add comments that describe what the code does. Variable names, function names, and the code itself already convey that.
 
-**When a comment is appropriate:** a hidden constraint, a non-obvious workaround, or a subtle invariant that a future reader would otherwise miss. Keep it short.
+**When a comment is appropriate:** a hidden constraint, a non-obvious workaround, or a subtle invariant that a future reader would otherwise miss. Keep it short. But never write a comment because something went wrong while writing the code. A bug you just fixed, a review remark, or a false start does not belong in the file. Documented behaviour of a framework or library is not commented in this codebase either.
 
 **Specifically: never document the absence of a feature.** Don't write "no JSON output for this command" or "this CLI doesn't support X" — readers wouldn't assume the missing thing exists, so the comment adds zero signal.
 
-Keep in mind that the codebase IS NOT a tutorial. The following is a bad comment, because it explains why an alternative route a beginner would chose (having a second value) or that was taken before was done in a different way now. Comments of this kind have no value.
+Keep in mind that the codebase IS NOT a tutorial. The following is a bad comment and could be omitted entirely, because it explains why an alternative route a beginner would chose (having a second value), or that was taken before, was done in a different way now. Comments of this kind have no value.
 
-```php
+```ts
 // The "back" destination comes from the payload: The session manages the history so
 // that it survives a page reload. Without a destination, there is no handler—so
 // "no back possible" should not be included as a second value alongside it.
@@ -87,6 +89,47 @@ const onBack = useMemo(
     () => previousStepId === null ? null : () => setCurrentStepId(previousStepId),
     [previousStepId],
 );
+```
+
+Comments should only apply to the code they are written at. The following is a bad comment because it does the same thing the example above does, but it also explains logic from a different place in the repo. 
+
+Bad:
+```php
+/**
+ * Es gilt dieselbe Auswahl wie bei der Anzeige der Standardpreise: aktiv, bereits gültig,
+ * ohne Verband und passend zur Berufsgruppe des Leads oder ohne Berufsgruppe. Entschieden
+ * wird über denselben PreisregelAufloeser - vorher hat diese Stelle die zuletzt begonnene
+ * Regel genommen und die Berufsgruppe nicht gewichtet, sodass sie bei einer
+ * berufsgruppenspezifischen und einer allgemeinen Regel eine andere Regel vermerkte als die
+ * Anzeige ausgeliefert hat.
+ */
+```
+
+Good:
+```php
+/**
+ * Es gilt dieselbe Auswahl wie bei der Anzeige der Standardpreise: aktiv, bereits gültig,
+ * ohne Verband und passend zur Berufsgruppe des Leads oder ohne Berufsgruppe.
+ */
+```
+
+Only use colons ":" in comments when listing things. If it is used anywhere else, the comment is likely too long and bloated and can be shortened.
+
+Bad:
+```php
+/**
+* Wandelt einen Dezimalwert in eine Zahl.
+*
+* Nötig, weil die Werte als Strings ankommen: die Spalten sind decimal und werden über den
+* Query Builder gelesen.
+*/
+```
+
+Good:
+```php
+/**
+ * Wandelt den Stringwert aus dem Ergebnis des Querybuilders in eine Zahl.
+ */
 ```
 
 ### Blank line before return
@@ -141,7 +184,7 @@ public function previousPageId(): ?int
 
 Do not use `!important` in CSS or SCSS.
 
-Achieve the needed specificity through proper selectors, restructured cascade, or scoped stylesheets — never via `!important`.
+Achieve the needed specificity through proper selectors, restructured cascade, or scoped stylesheets and never via `!important`.
 
 ### SCSS nesting mirrors the HTML tags
 

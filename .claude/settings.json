@@ -3,9 +3,6 @@
   "effortLevel": "low",
   "theme": "dark",
   "tui": "fullscreen",
-  "claudeMdExcludes": [
-    "/Users/*/Development/**"
-  ],
   "enabledPlugins": {
     "php-lsp@claude-plugins-official": true
   }

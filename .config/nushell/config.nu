@@ -34,3 +34,7 @@ $env.config = {
 export use ~/.config/nushell/config/commands.nu *
 export use ~/.config/nushell/config/alias.nu *
 
+if ($env.NVM_DIR? | default ($nu.home-dir | path join ".nvm") | path join "nvm.sh" | path exists) {
+    nvm use default | ignore
+}
+
