@@ -1,9 +1,12 @@
 {
+  "permissions": {
+    "defaultMode": "default"
+  },
   "model": "opus[1m]",
-  "effortLevel": "low",
-  "theme": "dark",
-  "tui": "fullscreen",
   "enabledPlugins": {
     "php-lsp@claude-plugins-official": true
-  }
+  },
+  "effortLevel": "low",
+  "tui": "fullscreen",
+  "theme": "dark"
 }
