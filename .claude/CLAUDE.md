@@ -71,6 +71,16 @@ Use full, descriptive identifier names. Do not abbreviate.
 
 The only allowed short name is `_` for genuinely-unused bindings.
 
+### Named parameters
+
+Functions provided with arguments whose meaning isn't imediately obvious, should be provided with there name (see `strict` in following example).
+
+```php
+if (in_array($page->type, self::RESTART_TRACKING_EVENT_PAGE_TYPES, strict: true)) {
+    // ...
+}
+```
+
 ### Minimal comments
 
 Do not add comments that describe what the code does. Variable names, function names, and the code itself already convey that.
