@@ -48,7 +48,9 @@ Each layer defines its own types and returns them:
 
 Conversions are `From` or `TryFrom` impls in the crate that receives the data. Value types used in queries, such as status enums and id newtypes that derive `sqlx::Type`, live in db.
 
-In general, where possible without to big overhead in implementation use newtypes
+In general, where possible without too big of an overhead in implementation, use newtypes.
+
+Newtypes can also be used as abstraction on each layer. For example, in a file host application that needs to scope root storage paths for each user, a scoped root path could be a separate type that enforces the scoping, and can be extended by path slices (for path traversal) but disallows climbing into the parent of the scoped root. 
 
 ## Reusability
 
@@ -80,7 +82,7 @@ Interface layer logs unexpected failures once if necessary. Expected outcomes su
 
 ## Frontend
 
-Frontend takes kinda a special place in this architecture. We only address server-side rendered HTML frontend, that is rendered in the same application in this architecture. Other kinds of frontend should be considered separately. A frontend itself could also use the same DL-Architecture.
+Frontend takes kinda a special place in this architecture. We only address server-side rendered HTML frontend, that is rendered in the same application in this architecture. Other kinds of frontend should be considered separately. A frontend itself could also use the same DL-Architecture, the patterns described below, or something entirely different.
 
 If the frontend is part of the same application however, it uses MVVM. It is considered a separate part. Imagine a crate structure similar to the one from the top of this document.
 
@@ -93,3 +95,5 @@ app
 ```
 
 The web depends on the frontend and nothing else does. Frontend just exposes things the web needs to build the HTML for responses.
+
+Only View and ViewModel are implemented for the frontend. The Rest of the application (`web` crate and downwards) is considered the model.
