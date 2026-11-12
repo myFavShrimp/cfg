@@ -1,6 +1,6 @@
 ---
 name: dla
-description: Direct Layers Architecture (DLA)..
+description: Direct Layers Architecture (DLA)
 ---
 
 # Direct Layers Architecture
