@@ -8,7 +8,6 @@
   },
   "effortLevel": "low",
   "tui": "fullscreen",
-<<<<<<< HEAD
   "theme": "dark",
   "editorMode": "normal",
   "agentPushNotifEnabled": true,
@@ -18,7 +17,4 @@
       "effortLevel": "low"
     }
   }
-=======
-  "theme": "dark"
->>>>>>> origin/main
 }
