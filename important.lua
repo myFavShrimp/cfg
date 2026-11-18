@@ -1,48 +1,46 @@
-tasks["detect_os"] = {
-    handler = function(system)
-        local os_result = system:run_command("uname -s")
-
-        if os_result.stdout:find("Linux") then
-            return "linux"
-        elseif os_result.stdout:find("Darwin") then
-            return "macos"
-        else
-            return
-        end
-    end,
+task "detect_os" {
     important = true,
+    handler = function(target_system)
+        if target_system:run_command('test "$(uname -s)" = Linux').exit_code == 0 then
+            return "linux"
+        end
+
+        if target_system:run_command('test "$(uname -s)" = Darwin').exit_code == 0 then
+            return "macos"
+        end
+
+        return nil
+    end,
 }
 
-tasks["check_is_macos"] = {
-    handler = function(system)
-        local result = system:run_command("uname -s")
+task "check_is_macos" {
+    important = true,
+    handler = function(target_system)
+        local is_macos = target_system:run_command('test "$(uname -s)" = Darwin').exit_code == 0
 
-        if string.find(result.stdout, "Darwin") then
+        if is_macos then
             log.info("macos system detected")
-
-            return true
         else
             log.info("system is not macos")
-
-            return false
         end
+
+        return is_macos
     end,
-    important = true,
 }
 
-tasks["check_is_fedora"] = {
-    handler = function(system)
-        local result = system:run_command("cat /etc/os-release")
+task "check_is_fedora" {
+    important = true,
+    handler = function(target_system)
+        local is_fedora = target_system:run_command("grep -qx 'ID=fedora' /etc/os-release").exit_code == 0
 
-        if string.find(result.stdout, "ID=fedora") then
+        if is_fedora then
             log.info("fedora system detected")
-
-            return true
         else
             log.info("system is not fedora")
-
-            return false
         end
+
+        return is_fedora
     end,
-    important = true,
 }
+
+return nil

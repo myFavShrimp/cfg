@@ -1,4 +1,4 @@
-local helpers = require("helpers")
+local helpers = require("../helpers")
 
 local flatpaks = {
     "com.github.tchx84.Flatseal",
@@ -14,19 +14,16 @@ local flatpaks = {
     "com.nitrokey.nitrokey-app2",
 }
 
-tasks["install_flatpaks"] = {
-    handler = function(system)
+task "install_flatpaks" {
+    handler = function(target_system)
         local commands = {}
 
-        for _, flatpak in ipairs(flatpaks) do
-            local install_command = "flatpak install --reinstall --noninteractive flathub " .. flatpak
-
-            table.insert(commands, install_command)
+        for _, flatpak in flatpaks do
+            table.insert(commands, "flatpak install --reinstall --noninteractive flathub " .. flatpak)
         end
 
-        helpers.execute_commands(
-            system,
-            unpack(commands)
-        )
+        helpers.execute_commands(target_system, commands)
     end,
 }
+
+return nil

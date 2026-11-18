@@ -1,19 +1,17 @@
-targets.systems["local"] = {
-    type = "local"
-}
+system "local" { type = "local" }
 
-require("important")
+require("./important")
 
-require("system/fedora")
+require("./system/fedora")
 
-require("application/dnf")
-require("application/brew")
-require("application/config")
-require("application/rust")
-require("application/rust_tools")
-require("application/flatpaks")
-require("application/docker")
-require("application/deno")
-require("application/node")
+require("./application/dnf")
+require("./application/brew")
+require("./application/config")
+require("./application/rust")
+require("./application/rust_tools")
+require("./application/flatpaks")
+require("./application/docker")
+require("./application/deno")
+require("./application/node")
 
-require("system/fonts")
+require("./system/fonts")

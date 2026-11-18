@@ -1,4 +1,4 @@
-local helpers = require("helpers")
+local helpers = require("../helpers")
 
 local link_config = {
     {
@@ -73,28 +73,21 @@ local link_config = {
     }
 }
 
-tasks["build_symlink_config"] = {
+task "build_symlink_config" {
     when = function()
-        return tasks["detect_os"].result ~= nil
+        return task["detect_os"].result ~= nil
     end,
     handler = function()
-        local current_os = tasks["detect_os"].result
-
-        local cfg_repo_path = helpers.trim_whitespace(host:run_command("pwd").stdout)
+        local current_os = task["detect_os"].result
 
         local links = {}
-        for _, link in ipairs(link_config) do
-            for _, os in ipairs(link.os) do
-                if os == current_os then
-                    for _, item in ipairs(link.items) do
-                        local source_path = cfg_repo_path .. "/" .. item.path
-                        local dest_path = link.destination .. "/" .. item.name
-
-                        table.insert(links, {
-                            source = source_path,
-                            destination = dest_path,
-                        })
-                    end
+        for _, link in link_config do
+            if table.find(link.os, current_os) then
+                for _, link_item in link.items do
+                    table.insert(links, {
+                        source = arc.project_root_path .. "/" .. link_item.path,
+                        destination = link.destination .. "/" .. link_item.name,
+                    })
                 end
             end
         end
@@ -103,19 +96,19 @@ tasks["build_symlink_config"] = {
     end,
 }
 
-tasks["symlink_configs"] = {
-    handler = function(system)
-        local symlink_config = tasks["build_symlink_config"].result
-
+task "symlink_configs" {
+    when = function()
+        return task["build_symlink_config"].state == "success"
+    end,
+    handler = function(target_system)
         local link_commands = {}
-        for _, link in ipairs(symlink_config) do
-            local symlink_cleanup_command = "rm -rf " .. link.destination
-            local symlink_command = "ln -sf " .. link.source .. " " .. link.destination
-
-            table.insert(link_commands, symlink_cleanup_command)
-            table.insert(link_commands, symlink_command)
+        for _, link in task["build_symlink_config"].result do
+            table.insert(link_commands, "rm -rf " .. link.destination)
+            table.insert(link_commands, "ln -sf " .. link.source .. " " .. link.destination)
         end
 
-        helpers.execute_commands(system, unpack(link_commands))
+        helpers.execute_commands(target_system, link_commands)
     end,
 }
+
+return nil

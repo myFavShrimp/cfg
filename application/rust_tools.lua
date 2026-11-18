@@ -1,8 +1,8 @@
-local helpers = require("helpers")
+local helpers = require("../helpers")
 
-tasks["install_rust_tools"] = {
-    handler = function(system)
-        local commands = {
+task "install_rust_tools" {
+    handler = function(target_system)
+        helpers.execute_commands(target_system, {
             "cargo install --locked cargo-binstall",
 
             "cargo binstall -y zellij",
@@ -21,8 +21,8 @@ tasks["install_rust_tools"] = {
             "cargo binstall -y cargo-expand",
 
             "rustup component add rust-analyzer",
-        }
-
-        helpers.execute_commands(system, unpack(commands))
+        })
     end,
 }
+
+return nil

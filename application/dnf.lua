@@ -1,4 +1,4 @@
-local helpers = require("helpers")
+local helpers = require("../helpers")
 
 local packages = {
     "perl-FindBin",
@@ -12,21 +12,21 @@ local packages = {
     "nodejs-bash-language-server",
 }
 
-tasks["install_dnf_packages"] = {
+task "install_dnf_packages" {
     when = function()
-        return tasks["check_is_fedora"].result == true
+        return task["check_is_fedora"].result == true
     end,
-    handler = function(system)
+    handler = function(target_system)
         local commands = {
             "sudo dnf group install development-tools -y",
         }
 
-        for _, package in ipairs(packages) do
-            local install_command = "sudo dnf install -y " .. package
-
-            table.insert(commands, install_command)
+        for _, package in packages do
+            table.insert(commands, "sudo dnf install -y " .. package)
         end
 
-        helpers.execute_commands(system, unpack(commands))
+        helpers.execute_commands(target_system, commands)
     end,
 }
+
+return nil
