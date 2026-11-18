@@ -13,6 +13,19 @@ task "detect_os" {
     end,
 }
 
+task "check_is_devbox" {
+    important = true,
+    handler = function()
+        local is_devbox = env.get("DEVBOX") == "1"
+
+        if is_devbox then
+            log.info("devbox detected")
+        end
+
+        return is_devbox
+    end,
+}
+
 task "check_is_macos" {
     important = true,
     handler = function(target_system)
