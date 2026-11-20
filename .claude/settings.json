@@ -8,5 +8,13 @@
   },
   "effortLevel": "low",
   "tui": "fullscreen",
-  "theme": "dark"
+  "theme": "dark",
+  "editorMode": "normal",
+  "agentPushNotifEnabled": true,
+  "useAutoModeDuringPlan": false,
+  "modelSettings": {
+    "claude-opus-5-5": {
+      "effortLevel": "low"
+    }
+  }
 }

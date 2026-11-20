@@ -1,29 +1,21 @@
-local helpers = require("helpers")
+local helpers = require("../helpers")
 
-local user_fonts_dir = "~/.local/share/fonts"
+local user_fonts_directory = "~/.local/share/fonts"
 
-tasks["install_fonts"] = {
+task "install_fonts" {
     when = function()
-        return tasks["detect_os"].result == "linux"
+        return task["detect_os"].result == "linux"
     end,
-    handler = function(system)
-        local current_os = tasks["detect_os"].result
+    handler = function(target_system)
+        local repository_fonts_directory = arc.project_root_path .. "/fonts"
 
-        if current_os ~= "linux" then
-            log.error("Not setting up fonts. System is not linux.")
-            return
-        end
-
-        local cfg_repo_path = helpers.trim_whitespace(host:run_command("pwd").stdout)
-        local repo_fonts_dir = cfg_repo_path .. "/fonts/"
-
-        local commands = {
-            "mkdir -p " .. user_fonts_dir,
-            "cp -r " .. repo_fonts_dir .. "/* " .. user_fonts_dir,
-            "rm -rf " .. user_fonts_dir .. "/Hack/Windows",
+        helpers.execute_commands(target_system, {
+            "mkdir -p " .. user_fonts_directory,
+            "cp -r " .. repository_fonts_directory .. "/* " .. user_fonts_directory,
+            "rm -rf " .. user_fonts_directory .. "/Hack/Windows",
             "fc-cache -v",
-        }
-
-        helpers.execute_commands(system, unpack(commands))
+        })
     end,
 }
+
+return nil

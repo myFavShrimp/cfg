@@ -1,4 +1,4 @@
-local helpers = require("helpers")
+local helpers = require("../helpers")
 
 local nvm_version = "v0.40.6"
 
@@ -8,61 +8,65 @@ local global_packages = {
     "typescript-language-server",
 }
 
-local function in_nvm_environment(command)
+local function in_nvm_environment(command: string): string
     return "bash -c 'export NVM_DIR=\"$HOME/.nvm\"; . \"$NVM_DIR/nvm.sh\"; " .. command .. "'"
 end
 
-tasks["check_nvm_installed"] = {
+task "check_nvm_installed" {
     when = function()
-        return tasks["check_is_macos"].result == true
+        return task["check_is_macos"].result == true
     end,
-    handler = function(system)
-        local result = system:run_command("test -s ~/.nvm/nvm.sh")
+    handler = function(target_system)
+        local is_nvm_installed = target_system:run_command("test -s ~/.nvm/nvm.sh").exit_code == 0
 
-        if result.exit_code == 0 then
+        if is_nvm_installed then
             log.info("nvm is already installed")
-
-            return true
         else
             log.info("nvm is not installed")
-
-            return false
         end
+
+        return is_nvm_installed
     end,
 }
 
-tasks["install_nvm"] = {
+task "install_nvm" {
     requires = {"check_nvm_installed"},
     when = function()
-        return tasks["check_is_macos"].result == true and tasks["check_nvm_installed"].result == false
+        return task["check_is_macos"].result == true and task["check_nvm_installed"].result == false
     end,
-    handler = function(system)
+    handler = function(target_system)
         -- PROFILE=/dev/null keeps the installer from appending its own snippet to
         -- the shell profiles, since nushell loads nvm through config/commands/nvm.nu.
         local install_command = "PROFILE=/dev/null bash -c 'curl -fsSL "
             .. "https://raw.githubusercontent.com/nvm-sh/nvm/" .. nvm_version .. "/install.sh | bash'"
 
-        helpers.execute_commands(system, install_command)
+        helpers.execute_commands(target_system, { install_command })
     end,
 }
 
-tasks["install_node_lts"] = {
+task "install_node_lts" {
     requires = {"install_nvm"},
     when = function()
-        return tasks["check_is_macos"].result == true
+        return task["check_is_macos"].result == true
     end,
-    handler = function(system)
-        helpers.execute_commands(system, in_nvm_environment("nvm install --lts"))
+    handler = function(target_system)
+        helpers.execute_commands(target_system, { in_nvm_environment("nvm install --lts") })
     end,
 }
 
-tasks["install_global_npm_packages"] = {
+task "install_global_npm_packages" {
     when = function()
-        return tasks["check_is_macos"].result == true
+        return task["check_is_macos"].result == true
     end,
-    handler = function(system)
-        for _, global_package in ipairs(global_packages) do
-            helpers.execute_commands(system, in_nvm_environment("npm install -g " .. global_package))
+    handler = function(target_system)
+        local commands = {}
+
+        for _, global_package in global_packages do
+            table.insert(commands, in_nvm_environment("npm install -g " .. global_package))
         end
+
+        helpers.execute_commands(target_system, commands)
     end,
 }
+
+return nil
