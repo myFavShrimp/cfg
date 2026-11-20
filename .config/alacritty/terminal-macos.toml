@@ -1,2 +1,5 @@
 [terminal]
 shell = { program = "/Users/d.wollgramm/.cargo/bin/nu", args = ["-l"] }
+
+[window]
+option_as_alt = "OnlyLeft"
