@@ -5,6 +5,7 @@ local packages = {
     "openssl",
     "php@8.4",
     "mysql-client",
+    "glab",
 }
 
 tasks["check_brew_installed"] = {
