@@ -151,6 +151,7 @@ let macos_paths = if $nu.os-info.name == "macos" {
 
 if $nu.os-info.name == "macos" {
     $env.DENO_TLS_CA_STORE = "system"
+    $env.LC_CTYPE = "en_US.UTF-8"
 }
 
 let paths_to_prepend = [
