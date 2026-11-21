@@ -62,6 +62,8 @@ Use cases are not allowed to call other use cases. They are domain entry points 
 
 Logic in domain, that can be shared by the above rules, can be taken out of use cases and put into separate functions. For example verifying TOTP tokens.
 
+Things that several crates need and that sit outside the layering can live in their own shared crates. For example, a `routes` crate with typed route definitions is used by `web` to register handlers and by `frontend` to build links. Shared crates hold no business logic and do not depend on the layered crates.
+
 ## db functions
 
 - Each function runs exactly one query.
@@ -77,6 +79,8 @@ Use cases open transactions where it makes sense from a business logic perspecti
 Every function in every layer has its own error type, defined right above or next to the function.
 
 `thiserror` is used for errors. Messages do not include data of source errors. Every error type is distinct, so each `#[from]` has exactly one source type. `?` converts each step's error into its variant, and the variant name records which step failed. Dependency errors such as `sqlx::Error` are nested directly as the source.
+
+In the data layer, a function may return a broad error type shared with other functions when its dependency does not allow telling error cases apart (for example `sqlx::Error`).
 
 Interface layer logs unexpected failures once if necessary. Expected outcomes such as not found or conflict become responses directly.
 
