@@ -10,8 +10,8 @@ description: Direct Layers Architecture (DLA)
 The workspace is layered. Each crate depends directly on the layer below it and calls that layer's functions.
 
 ```
-app
-├─▶ api ─┐
+app ─────┐
+├─▶ api ─┤
 └─▶ cli ─┴─▶ domain ──▶ db
 ```
 
@@ -31,7 +31,7 @@ If another language is used that supports Rust-like project/file/module trees, t
 
 ## Layers and Crates
 
-- **app**: the binary with `main`. It reads config, creates the `PgPool`, installs the tracing subscriber and starts api or cli.
+- **app**: the binary with `main`. It reads config, creates the `PgPool`, installs the tracing subscriber and starts api or cli. It may call domain directly for initialization, shutdown and other logic the binary itself needs.
 - **interface (api/cli/etc.)**: axum handlers, cli parsing and entry points, etc. A handler turns the request into use-case input, calls the use case and turns the result into an api response. Each kind is a separate crate (cli crate, api crate, etc.)
 - **domain**: use cases and domain objects. It holds all business logic, including transaction boundaries and retries. It depends on db, because SQL filters, ordering and constraints are part of the business logic.
 - **data (db/api clients/etc.)**: one function per query/request/operation, plus the row types those queries return.
@@ -58,7 +58,7 @@ Things may not be shared if they don't overlap conceptually. Technical overlap d
 
 For example, db query functions may be domain-/use case-specific. Use case specific queries may not be reused for other use cases. But a function like reading a specific user can be shared, because it will always be conceptually the same.
 
-Use cases are not allowed to call other use cases. They are domain entry points and only the interface layer is allowed to call them. A use case never triggers another entry point.
+Use cases are not allowed to call other use cases. They are domain entry points and only the interface layer and app are allowed to call them. A use case never triggers another entry point.
 
 Logic in domain, that can be shared by the above rules, can be taken out of use cases and put into separate functions. For example verifying TOTP tokens.
 
